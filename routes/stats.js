@@ -1,11 +1,11 @@
 const Router = require("koa-router");
 const stats = new Router();
-const fs = require("fs");
+const utils = require("../utils/utils");
 
 // route for getting latest message and number of calls
 stats.get("/stats", async ctx => {
   console.time("GET /stats");
-  const stats = JSON.parse(fs.readFileSync("messages.json", "utf8"));
+  const stats = utils.getMessages();
 
   ctx.body = {
     numberOfCalls: stats.numberOfCalls,

@@ -2,23 +2,35 @@ const fs = require("fs");
 
 // method that returns the saved message data.
 const getMessages = () => {
-  return fs.readFileSync("messages.json", "utf8");
+  return JSON.parse(fs.readFileSync("messages.json", "utf8"));
 };
 
 // method that writes message data to json file.
 const cacheMessages = db => {
-  console.log("cacheMessages");
   const data = JSON.stringify(db);
-  console.log("data", data);
-
   fs.writeFile("messages.json", data, err => {
     if (err) throw err;
   });
 };
 
+// method that will call a function once/only on app start up.
+const initialize = (fn, context) => {
+  let result;
+
+  return () => {
+    if (fn) {
+      result = fn.apply(context || this, arguments);
+      fn = null;
+    }
+
+    return result;
+  };
+};
+
 const utils = {
   cacheMessages,
-  getMessages
+  getMessages,
+  initialize
 };
 
 module.exports = utils;
