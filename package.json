@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "fs": "0.0.1-security",
     "koa": "^2.5.3",
-    "koa-router": "^7.4.0",
     "koa-body": "^4.0.4",
+    "koa-router": "^7.4.0",
     "nodemon": "^1.18.4"
   },
   "devDependencies": {},
@@ -24,5 +25,10 @@
   "bugs": {
     "url": "https://github.com/rickyforr/message_app/issues"
   },
-  "homepage": "https://github.com/rickyforr/message_app#readme"
+  "homepage": "https://github.com/rickyforr/message_app#readme",
+  "nodemonConfig": {
+    "ignore": [
+      "*.json"
+    ]
+  }
 }

@@ -1,31 +1,24 @@
 const fs = require("fs");
 
-const initialize = () => {
-  console.log("initialize db");
-
-  const db = {
-    messages: ["initial"],
-    lastMessage: {},
-    numberOfCalls: 0
-  };
-  const data = JSON.stringify(db);
-  fs.writeFile("messages.json", data, err => {
-    if (err) throw err;
-  });
+// method that returns the saved message data.
+const getMessages = () => {
+  return fs.readFileSync("messages.json", "utf8");
 };
 
+// method that writes message data to json file.
 const cacheMessages = db => {
   console.log("cacheMessages");
   const data = JSON.stringify(db);
+  console.log("data", data);
+
   fs.writeFile("messages.json", data, err => {
     if (err) throw err;
-    console.log("complete");
   });
 };
 
 const utils = {
   cacheMessages,
-  initialize
+  getMessages
 };
 
 module.exports = utils;
