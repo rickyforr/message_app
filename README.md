@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-Simple REST API for sending messages with 2 endpoints. The routes folder contains a js file for messages and stats. Utility function used in the app can be found in the utils folder.
+Simple REST API for sending messages with 2 endpoints.
 
 ## Getting Started
 
