@@ -20,7 +20,7 @@ const saveMessages = () => {
   messageData.messages && messageData.messages.length
     ? utils.cacheMessages(messageData)
     : (messageData = { messages: [], lastMessage: {}, numberOfCalls: 0 });
-  setTimeout(saveMessages, 5 * 1000);
+  setTimeout(saveMessages, 30 * 1000);
 };
 
 setMessages();
