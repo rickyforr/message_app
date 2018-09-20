@@ -18,8 +18,7 @@ const setMessages = utils.initialize(() => {
 
 // saves messages to json file every 30seconds
 const saveMessages = () => {
-  console.log(messageData);
-  messageData.messages.length
+  messageData.message && messageData.messages.length
     ? utils.cacheMessages(messageData)
     : (messageData = { messages: [], lastMessage: {}, numberOfCalls: 0 });
   setTimeout(saveMessages, 30 * 1000);
