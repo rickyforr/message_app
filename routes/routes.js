@@ -6,7 +6,6 @@ let messageData = {};
 
 // on app start get data from json file to populate messageData
 const setMessages = utils.initialize(() => {
-  console.log("initialize");
   const data = utils.getMessages();
 
   messageData = {
@@ -48,6 +47,18 @@ router.post("/messages", ctx => {
     ctx.body = { message: "Message Sent" };
   }
   console.timeEnd("POST /messages");
+});
+
+// route for getting latest message and number of calls
+router.get("/stats", async ctx => {
+  console.time("GET /stats");
+
+  ctx.body = {
+    numberOfCalls: messageData.numberOfCalls,
+    lastMessage: messageData.lastMessage
+  };
+
+  console.timeEnd("GET /stats");
 });
 
 module.exports = router;
